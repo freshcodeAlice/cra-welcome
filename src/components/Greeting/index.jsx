@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './Greeting.css';
 
-class Greeting extends Component{
+class Aloha extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -16,16 +16,20 @@ class Greeting extends Component{
     }
 
     render () {
-        const {firstName, photo} = this.props.user;
+        const {name} = this.props;
         const {isGreeting} = this.state;
+
+        if(!isGreeting) {
+            return <h1>Ну и пока!</h1>
+        }
+
         return (
-            <>
-        <h1> {isGreeting ? "Hello" : "Goodbye"}, {firstName}</h1>
-        <button onClick={this.alohaHandler}>Aloha!</button>
-        <img src={photo} className="userphoto"/> 
+        <>
+            <h1> {isGreeting ? "Hello" : "Goodbye"}, {name}</h1>
+            <button onClick={this.alohaHandler}>Aloha!</button>
         </>
         )
     }
 }
 
-export default Greeting;
+export default Aloha;
