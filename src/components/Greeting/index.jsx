@@ -20,7 +20,7 @@ class Aloha extends Component{
         const {isGreeting} = this.state;
 
         if(!isGreeting) {
-            return <h1>Ну и пока!</h1>
+            return <h1>Пока, {name}!</h1>
         }
 
         return (

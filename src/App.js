@@ -44,20 +44,15 @@ class App extends React.Component {
 // const copy = JSON.parse(JSON.stringify(users)); //вариант, но с оговорками =)
 
     this.setState({
-      users: copyArray.sort((a, b) => {
-        if(isDirectSort) {
-          return a.id - b.id
-        }
-        return b.id - a.id
-      }),
+      users: copyArray.sort((prev, next) => isDirectSort ? prev.id - next.id : next.id - prev.id),
     isDirectSort: !isDirectSort})
   };
 
 render() {
   const {users} = this.state;
 
-  const liArray = users.map((user)=>{
-    return <li>
+  const liArray = users.map((user, index)=>{
+    return <li key={user.id}>
       <Aloha name = {`${user.firstName} ${user.lastName}`} isGreeting/>
     </li>
   });
