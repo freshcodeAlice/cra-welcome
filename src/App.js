@@ -51,10 +51,8 @@ class App extends React.Component {
 render() {
   const {users} = this.state;
 
-  const liArray = users.map((user, index)=>{
-    return <li key={user.id}>
-      <Aloha name = {`${user.firstName} ${user.lastName}`} isGreeting/>
-    </li>
+  const liArray = users.map(({firstName, lastName, id})=>{ // index is not a good key!
+    return <Aloha name = {`${firstName} ${lastName}`} isGreeting key={id} id={id}/>
   });
 
   return (
