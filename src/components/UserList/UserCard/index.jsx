@@ -1,9 +1,18 @@
 import React from 'react';
+import './UserCard.css';
 
-const UserCard = () => {
+const UserCard = (props) => {
+
+    const cN = props.isSelected ? "selected" : "";
+
+    const btnHandler = () => {
+        const {selectCallback, id} = props;
+        selectCallback(id);
+    }
+
     return (
-        <div>
-            
+        <div className={cN} onClick={btnHandler}>
+            {props.firstName} {props.lastName}
         </div>
     );
 }

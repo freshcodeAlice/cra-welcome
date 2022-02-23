@@ -1,11 +1,68 @@
 import React, { Component } from 'react';
+import UserCard from './UserCard';
+
+const userDB = [
+    {
+        id: 1,
+        firstName: 'Luke',
+        lastName: 'Skywalker'
+    },
+    {
+        id: 2,
+        firstName: 'Leya',
+        lastName: 'Skywalker'
+    },
+    {
+        id: 3,
+        firstName: 'Han',
+        lastName: 'Solo'
+    },
+    {
+        id: 4,
+        firstName: 'R2D2',
+        lastName: 'Robot'
+    },
+    {
+        id: 5,
+        firstName: 'C3PO',
+        lastName: 'Robot'
+    },
+    {
+        id: 6,
+        firstName: 'Chubakka',
+        lastName: 'Wookee'
+    },
+];
+
 
 class UserList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: userDB.map((user)=> ({...user, isSelected: false})
+            )
+        }
+    }
+
+    mapUsers = ({firstName, lastName, id, isSelected})=> <UserCard firstName={firstName} lastName={lastName} id={id} key={id} isSelected={isSelected} selectCallback={this.setSelected}/>;
+
+    setSelected = (id) => {
+        const {users} = this.state;
+        const newUsers = [...users];
+        this.setState({
+            users: newUsers.map((user)=>({
+                ...user,
+                isSelected: user.id === id ? !user.isSelected : user.isSelected
+            }))
+        })
+    }
+    
     render() {
+        const {users} = this.state;
         return (
-            <div>
-                
-            </div>
+            <ul>
+                {users.map(this.mapUsers)}
+            </ul>
         );
     }
 }
