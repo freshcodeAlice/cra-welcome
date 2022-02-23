@@ -24,7 +24,7 @@ class Scene extends Component {
         return (
             <div className={cN}>
                 Current theme is {theme}
-                <Toggler />
+                <Toggler callbackParent={this.setTheme}/>
             </div>
         );
     }

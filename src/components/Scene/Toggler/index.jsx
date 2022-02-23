@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-class Toggler extends Component {
-    render() {
+function Toggler (props) {
+
         return (
-            <button> Click to change theme </button>
+            <button onClick={props.callbackParent}> Click to change theme </button>
         );
-    }
 }
 
 export default Toggler;
