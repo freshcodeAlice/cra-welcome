@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aloha from '../Greeting';
+import Aloha from '../Aloha';
 import AlohaList from '../AlohaList';
 
 class AlohaDashboard extends Component{

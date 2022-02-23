@@ -1,17 +1,33 @@
+import { render } from '@testing-library/react';
 import React, { Component } from 'react';
-import Aloha from '../Greeting';
+import Aloha from '../Aloha';
 
-function AlohaList (props){
-
-    const mapAloha = ({firstName, lastName, id})=> <Aloha name = {`${firstName} ${lastName}`} isGreeting key={id} id={id} />;
-
-    const {users} = props;
+class AlohaList extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: this.props.users
+        }
+    }
     
-    return (
-        <section>
-            {users.map(mapAloha)}
-        </section>
+    mapAloha = ({firstName, lastName, id})=> <Aloha name = {`${firstName} ${lastName}`} isGreeting key={id} id={id} callbackDelete={this.setList}/>;
+
+    setList = (id) => {
+        const {users} = this.state;
+        const filtered = users.filter((user)=> user.id !== id);
+        this.setState({
+            users: filtered
+        })
+    }
+    
+    render() {
+        const {users} = this.state;
+        return (
+            <section>
+                {users.map(this.mapAloha)}
+            </section>
         )
+    }
 }
 
 export default AlohaList

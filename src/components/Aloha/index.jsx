@@ -1,5 +1,5 @@
 import { Component } from "react";
-import './Greeting.css';
+import './Aloha.css';
 
 class Aloha extends Component{
     constructor(props) {
@@ -15,6 +15,11 @@ class Aloha extends Component{
             });
     }
 
+    deleteHandler = () => {
+        const {callbackDelete, id} = this.props;
+        callbackDelete(id);
+    }
+
     render () {
         const {name} = this.props;
         const {isGreeting} = this.state;
@@ -25,7 +30,8 @@ class Aloha extends Component{
 
         return (
         <>
-            <h1> {isGreeting ? "Hello" : "Goodbye"}, {name}</h1>
+            <h1> {isGreeting ? "Hello" : "Goodbye"}, {name}</h1> 
+            <button onClick={this.deleteHandler}>X</button>
             <button onClick={this.alohaHandler}>Aloha!</button>
         </>
         )
