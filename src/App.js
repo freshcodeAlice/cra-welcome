@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
- import AlohaDashboard from './components/AlohaDashboard';
+import AlohaDashboard from './components/AlohaComponents/AlohaDashboard';
+
 //import Scene from './components/Scene';
 
 
